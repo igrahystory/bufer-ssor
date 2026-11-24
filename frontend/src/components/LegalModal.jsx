@@ -79,47 +79,47 @@ export default function LegalModal({ docKey, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-warm-950/60 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div 
-        className="w-full sm:max-w-md bg-white dark:bg-zinc-900 rounded-t-2xl sm:rounded-2xl max-h-[calc(var(--tg-viewport-stable-height,100vh)-env(safe-area-inset-top)-env(safe-area-inset-bottom))] flex flex-col shadow-xl animate-slide-up border border-slate-200/60 dark:border-zinc-800"
+        className="warm-card w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl max-h-[calc(var(--tg-viewport-stable-height,100vh)-env(safe-area-inset-top)-env(safe-area-inset-bottom))] flex flex-col shadow-warm-3d animate-slide-up border border-warm-300/70 dark:border-warm-700/40"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Заголовок модального окна */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-100 dark:border-zinc-800/80">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-              <Icon size={18} />
+        <div className="flex items-center justify-between p-4.5 border-b border-warm-200/60 dark:border-warm-800/40">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/60 border border-terracotta-200/60 dark:border-terracotta-900/40 flex items-center justify-center text-terracotta-600 dark:text-terracotta-400 shadow-warm-xs">
+              <Icon size={19} />
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm leading-tight">
+              <h3 className="font-bold text-warm-900 dark:text-warm-50 text-sm leading-tight tracking-tight">
                 {doc.title}
               </h3>
-              <p className="text-[11px] text-slate-400 dark:text-zinc-500 font-normal mt-0.5">
+              <p className="text-[11px] text-warm-600 dark:text-warm-400 font-medium mt-0.5">
                 Редакция от 2026 года
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+            className="p-1.5 rounded-xl text-warm-500 hover:text-warm-800 dark:hover:text-warm-200 hover:bg-warm-100 dark:hover:bg-espresso-900 transition-colors"
             aria-label="Закрыть"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
         {/* Текст документа */}
-        <div className="p-5 overflow-y-auto text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-3 leading-relaxed whitespace-pre-line">
+        <div className="p-5 overflow-y-auto text-xs sm:text-sm text-warm-800 dark:text-warm-200 space-y-3.5 leading-relaxed whitespace-pre-line font-normal">
           {doc.content}
         </div>
 
         {/* Кнопка закрытия */}
-        <div className="p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] border-t border-slate-100 dark:border-zinc-800/80 bg-slate-50/50 dark:bg-zinc-900/50 rounded-b-2xl shrink-0">
+        <div className="p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] border-t border-warm-200/60 dark:border-warm-800/40 bg-warm-50/70 dark:bg-espresso-900/70 rounded-b-3xl shrink-0">
           <button
             onClick={onClose}
-            className="w-full py-2.5 px-4 bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 text-sm font-medium rounded-xl transition-colors"
+            className="btn-warm-secondary w-full py-3 px-4 rounded-2xl text-xs sm:text-sm font-bold shadow-warm-xs"
           >
             Понятно
           </button>

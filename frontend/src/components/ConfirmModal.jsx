@@ -36,7 +36,7 @@ export default function ConfirmModal({
   const modalDescription = description || (step === 1 ? (
     'Будут удалены связка, профили участников в рабочей базе, сессии, исходные сообщения и результаты разборов. Telegram ID может снова сохраниться при следующем входе. Активная подписка плательщика останется до конца оплаченного срока. Платёжные записи, журнал удаления и резервные копии обрабатываются отдельно — подробности указаны в Политике конфиденциальности.'
   ) : (
-    <span className="text-rose-600 dark:text-rose-400 font-medium">
+    <span className="text-terracotta-700 dark:text-terracotta-300 font-semibold">
       Это действие необратимо: восстановить пару, переписку и результаты разборов будет невозможно. Подписка плательщика останется активна до конца оплаченного срока.
     </span>
   ));
@@ -46,30 +46,30 @@ export default function ConfirmModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-warm-950/60 backdrop-blur-sm animate-fade-in"
       onClick={handleClose}
     >
       <div
-        className="w-full max-w-sm bg-white dark:bg-zinc-900 rounded-2xl p-5 shadow-2xl border border-rose-100 dark:border-rose-950/60 animate-slide-up"
+        className="warm-card w-full max-w-sm rounded-3xl p-5 shadow-warm-3d animate-slide-up border border-terracotta-200/80 dark:border-terracotta-900/60"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between">
-          <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 flex items-center justify-center border border-rose-100 dark:border-rose-900/50">
+          <div className="w-11 h-11 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/60 text-terracotta-600 dark:text-terracotta-400 flex items-center justify-center border border-terracotta-200/70 dark:border-terracotta-900/50 shadow-warm-xs">
             <AlertTriangle size={20} />
           </div>
           <button
             onClick={handleClose}
-            className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg transition-colors"
+            className="p-1.5 text-warm-500 hover:text-warm-800 dark:hover:text-warm-200 rounded-xl transition-colors"
           >
             <X size={18} />
           </button>
         </div>
 
         <div className="mt-3.5">
-          <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-base">
+          <h3 className="font-bold text-warm-900 dark:text-warm-50 text-base tracking-tight">
             {modalTitle}
           </h3>
-          <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+          <p className="mt-2 text-xs text-warm-700/80 dark:text-warm-300/80 leading-relaxed">
             {modalDescription}
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function ConfirmModal({
           <button
             disabled={isDeleting}
             onClick={handleNext}
-            className="w-full py-2.5 px-4 bg-rose-600 hover:bg-rose-700 text-white font-medium text-xs sm:text-sm rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
+            className="btn-warm-primary w-full py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-warm-button disabled:opacity-50"
           >
             <Trash2 size={16} />
             <span>{buttonLabel}</span>
@@ -87,7 +87,7 @@ export default function ConfirmModal({
           <button
             disabled={isDeleting}
             onClick={handleClose}
-            className="w-full py-2 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-slate-300 font-medium text-xs sm:text-sm rounded-xl transition-colors"
+            className="btn-warm-secondary w-full py-2.5 px-4 rounded-2xl font-semibold text-xs sm:text-sm"
           >
             Отмена
           </button>
