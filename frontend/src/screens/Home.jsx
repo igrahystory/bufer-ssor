@@ -89,13 +89,13 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
     }, 600);
   };
 
-  // Хелпер для отображения погоды в отношениях (тёплая природная палитра)
+  // Хелпер для отображения погоды в отношениях (спокойная минималистичная палитра)
   const getMoodDescriptor = (val) => {
-    if (val <= 2) return { text: 'Грозовое напряжение', icon: CloudLightning, color: 'text-terracotta-700 dark:text-terracotta-400' };
-    if (val <= 4) return { text: 'Дождливо и тяжело', icon: CloudRain, color: 'text-terracotta-600 dark:text-terracotta-300' };
-    if (val <= 6) return { text: 'Облачно, есть вопросы', icon: Cloud, color: 'text-warm-700 dark:text-warm-400' };
-    if (val <= 8) return { text: 'Прояснения, тепло', icon: CloudSun, color: 'text-terracotta-500 dark:text-dustyRose-300' };
-    return { text: 'Солнечно и спокойно', icon: Sun, color: 'text-olive-600 dark:text-olive-400' };
+    if (val <= 2) return { text: 'Грозовое напряжение', icon: CloudLightning };
+    if (val <= 4) return { text: 'Дождливо и тяжело', icon: CloudRain };
+    if (val <= 6) return { text: 'Облачно, есть вопросы', icon: Cloud };
+    if (val <= 8) return { text: 'Прояснения, тепло', icon: CloudSun };
+    return { text: 'Солнечно и спокойно', icon: Sun };
   };
 
   const moodDesc = getMoodDescriptor(mood);
@@ -117,7 +117,7 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
     setGlobalError(null);
 
     try {
-      WebApp.HapticFeedback?.impactOccurred('heavy');
+      WebApp.HapticFeedback?.impactOccurred('medium');
       const res = await api.startConflict();
       onStartSession(res.session_id);
     } catch (err) {
@@ -244,23 +244,21 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between px-4 pt-safe pb-safe sm:px-5 max-w-md mx-auto animate-fade-in">
-      <div className="space-y-3.5 app-home-stack pt-2">
-        {/* Шапка: логотип 36x36px с мягким объёмом, название и статус подписки */}
-        <div className="flex items-center justify-between py-1.5">
+    <div className="min-h-screen flex flex-col justify-between px-5 pt-safe pb-safe max-w-md mx-auto animate-fade-in">
+      <div className="space-y-5 app-home-stack pt-2 pb-6">
+        {/* Шапка: логотип, название и статус подписки */}
+        <header className="flex items-center justify-between py-1">
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <img
-                src="/logo.png"
-                alt="Буфер Ссор"
-                className="w-9 h-9 rounded-xl object-cover border border-warm-300/70 dark:border-warm-700/40 shadow-warm-sm shrink-0"
-              />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Буфер Ссор"
+              className="w-9 h-9 rounded-xl object-cover border border-neutral-200 dark:border-espresso-700 shadow-warm-xs shrink-0"
+            />
             <div className="flex flex-col min-w-0">
-              <h1 className="font-bold text-[16px] text-warm-900 dark:text-warm-50 tracking-tight leading-tight">
+              <h1 className="font-semibold text-[17px] text-neutral-900 dark:text-neutral-50 tracking-tight leading-snug">
                 Буфер Ссор
               </h1>
-              <span className="text-[11px] text-warm-700/75 dark:text-warm-400/80 font-normal leading-tight mt-0.5">
+              <span className="text-[12px] text-neutral-600 dark:text-neutral-400 font-normal leading-tight mt-0.5">
                 ИИ-медиатор для пар
               </span>
             </div>
@@ -271,58 +269,50 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
               role="button"
               tabIndex={0}
               onClick={() => onPaywallRequired && onPaywallRequired()}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-olive-100/80 dark:bg-olive-900/40 text-olive-800 dark:text-olive-300 border border-olive-300/60 dark:border-olive-700/40 shadow-warm-pill hover:bg-olive-200/60 transition-all cursor-pointer select-none"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-neutral-100 dark:bg-espresso-850 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-espresso-700 shadow-warm-xs cursor-pointer select-none"
             >
-              <Sparkles size={12} className="text-olive-600 dark:text-olive-300" />
+              <Sparkles size={13} className="text-neutral-700 dark:text-neutral-300" />
               <span>Премиум</span>
             </div>
           ) : (
             <button
               type="button"
               onClick={() => onPaywallRequired && onPaywallRequired()}
-              className="btn-warm-primary inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-warm-button shrink-0"
+              className="btn-warm-secondary inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium shrink-0"
             >
-              <Sparkles size={12} className="text-amber-200 shrink-0" />
+              <Sparkles size={13} className="text-neutral-700 dark:text-neutral-300" />
               <span>Премиум</span>
             </button>
           )}
-        </div>
+        </header>
 
         {/* Slim-плашка статуса тарифа */}
         <div
           role="button"
           tabIndex={0}
           onClick={() => onPaywallRequired && onPaywallRequired()}
-          className="warm-card-subtle flex items-center justify-between px-3.5 py-2 rounded-2xl cursor-pointer group select-none"
+          className="bg-neutral-100 dark:bg-espresso-900 border border-neutral-200 dark:border-espresso-700 flex items-center justify-between px-4 py-2.5 rounded-2xl cursor-pointer group select-none transition-colors"
         >
-          <div className="flex items-center gap-2">
-            <span
-              className={`w-2 h-2 rounded-full shrink-0 shadow-xs ${
-                isPremium
-                  ? 'bg-olive-500'
-                  : freeSessionsLeft > 0
-                  ? 'bg-terracotta-500'
-                  : 'bg-rose-500'
-              }`}
-            />
-            <span className="text-xs font-medium text-warm-900 dark:text-warm-100">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-neutral-900 dark:bg-neutral-100 shrink-0" />
+            <span className="text-xs font-medium text-neutral-900 dark:text-neutral-100">
               {isPremium
                 ? 'Премиум безлимит'
                 : `Осталось разборов: ${freeSessionsLeft}`}
             </span>
           </div>
 
-          <span className="text-xs text-terracotta-600 dark:text-terracotta-400 font-semibold group-hover:text-terracotta-700 dark:group-hover:text-terracotta-300 transition-colors">
+          <span className="text-xs text-neutral-600 dark:text-neutral-400 font-medium group-hover:text-neutral-900 dark:group-hover:text-neutral-200 transition-colors">
             {isPremium ? 'Детали ›' : 'Пополнить ›'}
           </span>
         </div>
 
         {globalError && (
-          <div role="alert" className="p-3.5 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/40 text-terracotta-800 dark:text-terracotta-200 text-xs border border-terracotta-200 dark:border-terracotta-900/60 flex items-center justify-between gap-2 shadow-warm-xs animate-fade-in">
+          <div role="alert" className="p-4 rounded-2xl bg-neutral-100 dark:bg-espresso-900 text-neutral-900 dark:text-neutral-100 text-xs border border-neutral-200 dark:border-espresso-700 flex items-center justify-between gap-2 shadow-warm-xs animate-fade-in">
             <span>{globalError}</span>
             <button
               onClick={() => setGlobalError(null)}
-              className="text-terracotta-500 hover:text-terracotta-700 text-sm ml-2 font-bold p-1"
+              className="text-neutral-500 hover:text-neutral-900 text-base ml-2 p-1 font-medium"
             >
               ×
             </button>
@@ -330,36 +320,36 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
         )}
 
         {/* =================================================================== */}
-        {/* ЭЛЕМЕНТ 1: Статус-бар пары + Погода в отношениях (Слайдер 1-10)     */}
+        {/* ЭЛЕМЕНТ 1: Статус-бар пары + Погода в отношениях                    */}
         {/* =================================================================== */}
-        <div className="warm-card rounded-3xl p-4.5 space-y-4">
+        <div className="warm-card rounded-3xl p-5 sm:p-6 space-y-5">
           {/* Статус связи */}
-          <div className="flex items-center justify-between pb-3.5 border-b border-warm-200/60 dark:border-warm-800/40">
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-9 h-9 rounded-2xl bg-terracotta-100 dark:bg-terracotta-950/60 border border-terracotta-200 dark:border-terracotta-900/50 flex items-center justify-center text-terracotta-700 dark:text-terracotta-300 shrink-0 font-bold text-xs shadow-warm-xs">
+          <div className="flex items-center justify-between pb-4 border-b border-neutral-200 dark:border-espresso-700">
+            <div className="flex items-center gap-3.5 min-w-0">
+              <div className="w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-espresso-800 border border-neutral-200 dark:border-espresso-700 flex items-center justify-center text-neutral-900 dark:text-neutral-100 shrink-0 font-medium text-xs shadow-warm-xs">
                 {user.first_name?.[0] || 'Я'}
               </div>
               <div className="min-w-0">
                 {couple?.has_partner ? (
                   <>
-                    <div className="text-xs font-bold text-warm-900 dark:text-warm-100 truncate">
+                    <div className="text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate">
                       {user.first_name || 'Вы'} и {couple?.partner_name || 'Вторая половинка'}
                     </div>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <span className="w-2 h-2 rounded-full bg-olive-500 shadow-xs" />
-                      <span className="text-[11px] text-olive-700 dark:text-olive-300 font-medium">
+                    <div className="flex items-center gap-1.5 mt-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 dark:bg-neutral-100" />
+                      <span className="text-xs text-neutral-600 dark:text-neutral-400">
                         Партнёр на связи
                       </span>
                     </div>
                   </>
                 ) : (
                   <>
-                    <div className="text-xs font-bold text-warm-900 dark:text-warm-100 truncate">
+                    <div className="text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate">
                       {user.first_name || 'Вы'}
                     </div>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <span className="w-2 h-2 rounded-full bg-terracotta-400 animate-pulse" />
-                      <span className="text-[11px] text-warm-700/70 dark:text-warm-400">
+                    <div className="flex items-center gap-1.5 mt-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
+                      <span className="text-xs text-neutral-600 dark:text-neutral-400">
                         Вторая половинка ещё не подключена
                       </span>
                     </div>
@@ -371,22 +361,22 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
             {!couple?.has_partner && (
               <button
                 onClick={handleInvitePartner}
-                className="btn-warm-secondary inline-flex items-center gap-1.5 py-1.5 px-3 rounded-xl text-xs font-medium shrink-0"
+                className="btn-warm-secondary inline-flex items-center gap-1.5 py-1.5 px-3.5 rounded-xl text-xs font-medium shrink-0"
               >
-                <UserPlus size={13} className="text-terracotta-500" />
+                <UserPlus size={13} className="text-neutral-700 dark:text-neutral-300" />
                 <span>Пригласить</span>
               </button>
             )}
           </div>
 
           {/* Слайдер «Погода в отношениях» */}
-          <div>
-            <div className="flex items-center justify-between text-xs mb-2.5">
-              <div className="flex items-center gap-1.5 font-medium text-warm-800 dark:text-warm-200">
-                <MoodIcon size={16} className={moodDesc.color} />
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-xs">
+              <div className="flex items-center gap-2 font-medium text-neutral-700 dark:text-neutral-300">
+                <MoodIcon size={16} className="text-neutral-900 dark:text-neutral-100" />
                 <span>Погода в отношениях</span>
               </div>
-              <span className={`font-semibold ${moodDesc.color}`}>
+              <span className="font-semibold text-neutral-900 dark:text-neutral-100">
                 {mood}/10 — {moodDesc.text}
               </span>
             </div>
@@ -403,10 +393,10 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
               />
             </div>
 
-            <div className="flex items-center justify-between text-[11px] text-warm-600/70 dark:text-warm-400 mt-1.5 font-medium">
+            <div className="flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400 font-medium">
               <span>1 (Гроза)</span>
               {couple?.partner_mood ? (
-                <span className="px-2.5 py-0.5 rounded-full bg-warm-100 dark:bg-espresso-850 border border-warm-300/60 dark:border-warm-700/40 text-terracotta-700 dark:text-terracotta-300 font-semibold shadow-warm-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-espresso-850 border border-neutral-200 dark:border-espresso-700 text-neutral-900 dark:text-neutral-100 font-medium">
                   Оценка партнёра: {couple.partner_mood}/10
                 </span>
               ) : (
@@ -425,47 +415,47 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
           onClick={handleStartBalance}
           disabled={isStartingBalance}
           aria-busy={isStartingBalance}
-          className="warm-card w-full rounded-3xl p-4.5 text-left flex items-center gap-3.5 group select-none"
+          className="warm-card w-full rounded-3xl p-5 sm:p-6 text-left flex items-center gap-4 group select-none transition-all"
         >
-          <span className="w-11 h-11 rounded-2xl bg-dustyRose-100 dark:bg-dustyRose-900/30 text-terracotta-600 dark:text-terracotta-300 border border-dustyRose-200/60 dark:border-dustyRose-800/40 flex items-center justify-center shrink-0 shadow-warm-xs">
+          <span className="w-11 h-11 rounded-2xl bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-espresso-700 flex items-center justify-center shrink-0 shadow-warm-xs">
             {isStartingBalance ? <Activity size={20} className="animate-spin" /> : <Activity size={20} />}
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block text-sm font-bold text-warm-900 dark:text-warm-100 tracking-tight">
+            <span className="block text-[15px] font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">
               Баланс отношений
             </span>
-            <span className="block text-xs text-warm-700/80 dark:text-warm-400 mt-0.5 leading-snug">
+            <span className="block text-xs text-neutral-600 dark:text-neutral-400 mt-1 leading-relaxed">
               {isStartingBalance 
                 ? 'Открываем ваш баланс…' 
                 : couple?.has_partner 
-                ? 'Короткий check-in для вас обоих и идеи, чем заняться вместе' 
+                ? 'Короткий совместный чек-ин и идеи, чем заняться вместе' 
                 : 'Подключите партнёра, чтобы пройти вместе'}
             </span>
           </span>
           {couple?.has_partner && !isStartingBalance && (
-            <ArrowRight size={18} className="text-terracotta-500 dark:text-terracotta-400 shrink-0 transition-transform group-hover:translate-x-0.5" />
+            <ArrowRight size={18} className="text-neutral-400 dark:text-neutral-500 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:text-neutral-900 dark:group-hover:text-neutral-100" />
           )}
         </button>
 
         {/* =================================================================== */}
         {/* ЭЛЕМЕНТ 2: Центральная большая кнопка разбора конфликта             */}
         {/* =================================================================== */}
-        <div className="pt-1 pb-1">
+        <div className="space-y-3">
           {latestCompletedSession?.id && (
             <button
               onClick={() => onOpenActiveSession(latestCompletedSession.id)}
-              className="warm-card w-full p-4 mb-3 rounded-2xl bg-olive-50/70 dark:bg-olive-950/30 border border-olive-200 dark:border-olive-900/50 text-left flex items-center justify-between gap-3 group"
+              className="warm-card w-full p-4.5 rounded-2xl bg-neutral-100 dark:bg-espresso-900 border border-neutral-200 dark:border-espresso-700 text-left flex items-center justify-between gap-3 group"
             >
               <div>
-                <div className="text-sm font-bold text-olive-900 dark:text-olive-200 flex items-center gap-1.5">
-                  <CheckCircle2 size={16} className="text-olive-600 dark:text-olive-400" />
+                <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-neutral-900 dark:text-neutral-100" />
                   <span>Разбор готов</span>
                 </div>
-                <div className="text-xs text-olive-800/80 dark:text-olive-300/80 mt-0.5">
+                <div className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5">
                   Открыть итог и персональную карточку
                 </div>
               </div>
-              <ArrowRight size={18} className="shrink-0 text-olive-700 dark:text-olive-300 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight size={18} className="shrink-0 text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-transform group-hover:translate-x-0.5" />
             </button>
           )}
 
@@ -473,37 +463,37 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
             /* Кнопка возврата к активному разбору */
             <button
               onClick={() => onOpenActiveSession(activeSession.id)}
-              className="w-full p-5 rounded-3xl bg-gradient-to-br from-terracotta-500 to-terracotta-700 text-white shadow-warm-button flex items-center justify-between text-left group"
+              className="w-full p-6 sm:p-7 rounded-3xl bg-neutral-900 dark:bg-neutral-100 text-neutral-50 dark:text-neutral-900 shadow-warm-button flex items-center justify-between text-left group transition-all"
             >
               <div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-white text-[10px] font-semibold tracking-wider uppercase mb-1.5 backdrop-blur-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/15 dark:bg-black/10 text-white dark:text-neutral-900 text-[10px] font-semibold tracking-wider uppercase mb-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white dark:bg-neutral-900 animate-pulse" />
                   Сессия в процессе
                 </div>
-                <div className="text-base sm:text-lg font-bold leading-tight">
+                <div className="text-base sm:text-lg font-semibold leading-tight">
                   Продолжить текущий разбор
                 </div>
-                <div className="text-xs text-white/80 mt-1">
+                <div className="text-xs opacity-80 mt-1">
                   Нажмите, чтобы проверить статус или прочесть готовый анализ
                 </div>
               </div>
-              <ArrowRight size={22} className="shrink-0 transition-transform group-hover:translate-x-1" />
+              <ArrowRight size={20} className="shrink-0 transition-transform group-hover:translate-x-1" />
             </button>
           ) : (
-            /* Основная центральная 3D-кнопка старта нового разбора */
+            /* Основная центральная кнопка старта нового разбора (Clean Minimal Luxury) */
             <button
               onClick={handleStartConflict}
               disabled={isStartingConflict}
-              className="home-conflict-warm w-full p-6 rounded-3xl text-white text-center flex flex-col items-center justify-center gap-2.5 group disabled:opacity-75 disabled:cursor-wait"
+              className="home-conflict-warm w-full p-7 rounded-3xl text-center flex flex-col items-center justify-center gap-3 shadow-warm-button group disabled:opacity-75 disabled:cursor-wait transition-all"
             >
-              <div className="w-13 h-13 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center text-white backdrop-blur-md shadow-inner animate-float-soft">
-                <Heart size={26} className="text-white fill-white/25" />
+              <div className="w-12 h-12 rounded-2xl bg-white/10 dark:bg-black/10 border border-white/15 dark:border-black/10 flex items-center justify-center text-white dark:text-neutral-900 animate-float-soft">
+                <Heart size={24} className="fill-current opacity-80" />
               </div>
               <div>
-                <div className="text-xl sm:text-2xl font-black tracking-tight text-white drop-shadow-xs">
+                <div className="text-xl sm:text-[22px] font-semibold tracking-tight text-white dark:text-neutral-900">
                   {isStartingConflict ? 'Запуск сессии...' : 'У нас конфликт'}
                 </div>
-                <div className="text-xs text-white/90 font-medium mt-0.5">
+                <div className="text-xs text-white/80 dark:text-neutral-600 font-normal mt-1">
                   Разобрать ситуацию бережно через ИИ
                 </div>
               </div>
@@ -512,36 +502,36 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
         </div>
 
         {/* Бейдж тайны исповеди */}
-        <div className="warm-card-subtle flex items-center justify-center gap-2 py-2.5 px-4 rounded-2xl text-xs font-medium text-warm-800 dark:text-warm-200">
-          <Lock size={13} className="text-olive-600 dark:text-olive-400 shrink-0" />
+        <div className="bg-neutral-100 dark:bg-espresso-900 border border-neutral-200 dark:border-espresso-700 flex items-center justify-center gap-2 py-2.5 px-4 rounded-2xl text-xs font-normal text-neutral-600 dark:text-neutral-400 text-center">
+          <Lock size={13} className="text-neutral-700 dark:text-neutral-300 shrink-0" />
           <span>Режим тайны исповеди активен: партнёр не увидит ваши слова</span>
         </div>
 
         {/* =================================================================== */}
         {/* ЭЛЕМЕНТ 3: Две кнопки быстрых сигналов (Белый флаг / Тонкий намёк)   */}
         {/* =================================================================== */}
-        <div className="grid grid-cols-2 gap-3 pt-0.5">
+        <div className="grid grid-cols-2 gap-3.5">
           {/* Белый флаг */}
           <button
             onClick={handleWhiteFlag}
             disabled={isSendingWhiteFlag || whiteFlagSuccess}
-            className={`p-4 rounded-3xl text-left transition-all flex flex-col justify-between ${
+            className={`p-5 rounded-3xl text-left transition-all flex flex-col justify-between min-h-[120px] ${
               whiteFlagSuccess
-                ? 'bg-olive-50 dark:bg-olive-950/60 border border-olive-300 dark:border-olive-800 text-olive-900 dark:text-olive-200 shadow-warm-card'
-                : 'warm-card text-warm-900 dark:text-warm-100 hover:border-warm-300 dark:hover:border-warm-700/60'
+                ? 'bg-neutral-100 dark:bg-espresso-900 border border-neutral-300 dark:border-espresso-600 text-neutral-900 dark:text-neutral-100 shadow-warm-card'
+                : 'warm-card text-neutral-900 dark:text-neutral-100 hover:border-neutral-300 dark:hover:border-espresso-600'
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-2xl filter drop-shadow-xs">🏳️</span>
+              <span className="text-2xl">🏳️</span>
               {whiteFlagSuccess && (
-                <CheckCircle2 size={16} className="text-olive-600 dark:text-olive-400" />
+                <CheckCircle2 size={16} className="text-neutral-900 dark:text-neutral-100" />
               )}
             </div>
             <div className="mt-3">
-              <div className="font-bold text-xs sm:text-sm text-warm-900 dark:text-warm-50">
+              <div className="font-semibold text-xs sm:text-sm text-neutral-900 dark:text-neutral-50">
                 {whiteFlagSuccess ? 'Флаг поднят!' : 'Белый флаг'}
               </div>
-              <div className="text-[11px] text-warm-600 dark:text-warm-400 mt-0.5 leading-snug">
+              <div className="text-[12px] text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">
                 {whiteFlagSuccess ? 'Бот передал сигнал' : 'Злюсь, но люблю'}
               </div>
             </div>
@@ -550,19 +540,19 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
           {/* Тонкий намёк */}
           <button
             onClick={() => setIsHintOpen(true)}
-            className="warm-card p-4 rounded-3xl text-warm-900 dark:text-warm-100 text-left transition-all flex flex-col justify-between hover:border-warm-300 dark:hover:border-warm-700/60"
+            className="warm-card p-5 rounded-3xl text-neutral-900 dark:text-neutral-100 text-left transition-all flex flex-col justify-between min-h-[120px] hover:border-neutral-300 dark:hover:border-espresso-600"
           >
             <div className="flex items-center justify-between">
-              <span className="text-2xl filter drop-shadow-xs">💡</span>
-              <span className="text-[10px] font-bold text-terracotta-600 dark:text-terracotta-400 px-2 py-0.5 rounded-full bg-terracotta-50 dark:bg-terracotta-950/50 border border-terracotta-200/60 dark:border-terracotta-800/40 uppercase tracking-wider">
+              <span className="text-2xl">💡</span>
+              <span className="text-[10px] font-medium text-neutral-600 dark:text-neutral-400 px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-espresso-850 border border-neutral-200 dark:border-espresso-700 uppercase tracking-wider">
                 4 варианта
               </span>
             </div>
             <div className="mt-3">
-              <div className="font-bold text-xs sm:text-sm text-warm-900 dark:text-warm-50">
+              <div className="font-semibold text-xs sm:text-sm text-neutral-900 dark:text-neutral-50">
                 Тонкий намёк
               </div>
-              <div className="text-[11px] text-warm-600 dark:text-warm-400 mt-0.5 leading-snug">
+              <div className="text-[12px] text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">
                 Мягкая подсказка ботом
               </div>
             </div>
@@ -571,37 +561,37 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
       </div>
 
       {/* Подвал: Поддержка, ссылки на документы и удаление данных пары */}
-      <div className="pt-6 pb-2 text-center space-y-3.5">
+      <footer className="pt-6 pb-2 text-center space-y-4">
         {/* Кнопка «Написать в поддержку» */}
         <div className="flex justify-center">
           <button
             type="button"
             onClick={handleContactSupport}
-            className="btn-warm-secondary inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-medium cursor-pointer shadow-warm-xs"
+            className="btn-warm-secondary inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-medium cursor-pointer shadow-warm-xs"
           >
-            <MessageCircle size={14} className="text-terracotta-500 shrink-0" />
+            <MessageCircle size={14} className="text-neutral-700 dark:text-neutral-300 shrink-0" />
             <span>Написать в поддержку</span>
           </button>
         </div>
 
-        <div className="flex items-center justify-center gap-3 text-[11px] text-warm-600/80 dark:text-warm-400">
+        <div className="flex items-center justify-center gap-3 text-xs text-neutral-600 dark:text-neutral-400 font-normal">
           <button
             onClick={() => setActiveLegalDoc('terms')}
-            className="hover:underline hover:text-warm-900 dark:hover:text-warm-200 transition-colors"
+            className="hover:underline hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
           >
             Оферта
           </button>
           <span>•</span>
           <button
             onClick={() => setActiveLegalDoc('privacy')}
-            className="hover:underline hover:text-warm-900 dark:hover:text-warm-200 transition-colors"
+            className="hover:underline hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
           >
             Конфиденциальность
           </button>
           <span>•</span>
           <button
             onClick={() => setActiveLegalDoc('nda')}
-            className="hover:underline hover:text-warm-900 dark:hover:text-warm-200 transition-colors"
+            className="hover:underline hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
           >
             Тайна исповеди
           </button>
@@ -610,21 +600,21 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
         <div className="flex items-center justify-center gap-2 pt-0.5">
           <button
             onClick={() => setIsConfirmHistoryOpen(true)}
-            className="inline-flex items-center gap-1 text-[11px] text-warm-600/70 hover:text-warm-800 dark:text-warm-400/80 dark:hover:text-warm-200 font-medium py-1 px-2 rounded-xl transition-colors"
+            className="inline-flex items-center gap-1 text-xs text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 font-medium py-1 px-2.5 rounded-xl transition-colors"
           >
             <History size={12} />
             <span>Очистить историю</span>
           </button>
-          <span className="text-warm-400/40 dark:text-warm-700">•</span>
+          <span className="text-neutral-300 dark:text-espresso-700">•</span>
           <button
             onClick={() => setIsConfirmDeleteOpen(true)}
-            className="inline-flex items-center gap-1 text-[11px] text-terracotta-600/80 hover:text-terracotta-700 dark:text-terracotta-400 dark:hover:text-terracotta-300 font-medium py-1 px-2 rounded-xl transition-colors"
+            className="inline-flex items-center gap-1 text-xs text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 font-medium py-1 px-2.5 rounded-xl transition-colors"
           >
             <Trash2 size={12} />
             <span>Удалить пару</span>
           </button>
         </div>
-      </div>
+      </footer>
 
       {/* Модальные окна */}
       <HintModal

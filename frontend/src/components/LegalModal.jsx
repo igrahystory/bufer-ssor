@@ -79,31 +79,31 @@ export default function LegalModal({ docKey, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-warm-950/60 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/40 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div 
-        className="warm-card w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl max-h-[calc(var(--tg-viewport-stable-height,100vh)-env(safe-area-inset-top)-env(safe-area-inset-bottom))] flex flex-col shadow-warm-3d animate-slide-up border border-warm-300/70 dark:border-warm-700/40"
+        className="warm-card w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl max-h-[calc(var(--tg-viewport-stable-height,100vh)-env(safe-area-inset-top)-env(safe-area-inset-bottom))] flex flex-col shadow-warm-3d animate-slide-up border border-neutral-200 dark:border-espresso-700 bg-white dark:bg-espresso-850"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Заголовок модального окна */}
-        <div className="flex items-center justify-between p-4.5 border-b border-warm-200/60 dark:border-warm-800/40">
+        <div className="flex items-center justify-between p-5 border-b border-neutral-200 dark:border-espresso-700">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/60 border border-terracotta-200/60 dark:border-terracotta-900/40 flex items-center justify-center text-terracotta-600 dark:text-terracotta-400 shadow-warm-xs">
-              <Icon size={19} />
+            <div className="w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-espresso-800 border border-neutral-200 dark:border-espresso-700 flex items-center justify-center text-neutral-900 dark:text-neutral-100 shadow-warm-xs">
+              <Icon size={18} />
             </div>
             <div>
-              <h3 className="font-bold text-warm-900 dark:text-warm-50 text-sm leading-tight tracking-tight">
+              <h3 className="font-semibold text-neutral-900 dark:text-neutral-50 text-sm leading-tight tracking-tight">
                 {doc.title}
               </h3>
-              <p className="text-[11px] text-warm-600 dark:text-warm-400 font-medium mt-0.5">
+              <p className="text-[11px] text-neutral-500 font-normal mt-0.5">
                 Редакция от 2026 года
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl text-warm-500 hover:text-warm-800 dark:hover:text-warm-200 hover:bg-warm-100 dark:hover:bg-espresso-900 transition-colors"
+            className="p-1.5 rounded-xl text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-espresso-800 transition-colors"
             aria-label="Закрыть"
           >
             <X size={18} />
@@ -111,15 +111,15 @@ export default function LegalModal({ docKey, onClose }) {
         </div>
 
         {/* Текст документа */}
-        <div className="p-5 overflow-y-auto text-xs sm:text-sm text-warm-800 dark:text-warm-200 space-y-3.5 leading-relaxed whitespace-pre-line font-normal">
+        <div className="p-6 overflow-y-auto text-xs sm:text-[13px] text-neutral-700 dark:text-neutral-300 space-y-3.5 leading-relaxed whitespace-pre-line font-normal">
           {doc.content}
         </div>
 
         {/* Кнопка закрытия */}
-        <div className="p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] border-t border-warm-200/60 dark:border-warm-800/40 bg-warm-50/70 dark:bg-espresso-900/70 rounded-b-3xl shrink-0">
+        <div className="p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] border-t border-neutral-200 dark:border-espresso-700 bg-neutral-50/80 dark:bg-espresso-900/80 rounded-b-3xl shrink-0">
           <button
             onClick={onClose}
-            className="btn-warm-secondary w-full py-3 px-4 rounded-2xl text-xs sm:text-sm font-bold shadow-warm-xs"
+            className="btn-warm-secondary w-full py-3 px-4 rounded-2xl text-xs sm:text-sm font-semibold"
           >
             Понятно
           </button>

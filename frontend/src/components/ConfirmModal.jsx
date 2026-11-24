@@ -36,7 +36,7 @@ export default function ConfirmModal({
   const modalDescription = description || (step === 1 ? (
     'Будут удалены связка, профили участников в рабочей базе, сессии, исходные сообщения и результаты разборов. Telegram ID может снова сохраниться при следующем входе. Активная подписка плательщика останется до конца оплаченного срока. Платёжные записи, журнал удаления и резервные копии обрабатываются отдельно — подробности указаны в Политике конфиденциальности.'
   ) : (
-    <span className="text-terracotta-700 dark:text-terracotta-300 font-semibold">
+    <span className="text-neutral-900 dark:text-neutral-100 font-semibold">
       Это действие необратимо: восстановить пару, переписку и результаты разборов будет невозможно. Подписка плательщика останется активна до конца оплаченного срока.
     </span>
   ));
@@ -46,39 +46,39 @@ export default function ConfirmModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-warm-950/60 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fade-in"
       onClick={handleClose}
     >
       <div
-        className="warm-card w-full max-w-sm rounded-3xl p-5 shadow-warm-3d animate-slide-up border border-terracotta-200/80 dark:border-terracotta-900/60"
+        className="warm-card w-full max-w-sm rounded-3xl p-6 shadow-warm-3d animate-slide-up border border-neutral-200 dark:border-espresso-700 bg-white dark:bg-espresso-850"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between">
-          <div className="w-11 h-11 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/60 text-terracotta-600 dark:text-terracotta-400 flex items-center justify-center border border-terracotta-200/70 dark:border-terracotta-900/50 shadow-warm-xs">
+          <div className="w-11 h-11 rounded-2xl bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 flex items-center justify-center border border-neutral-200 dark:border-espresso-700 shadow-warm-xs">
             <AlertTriangle size={20} />
           </div>
           <button
             onClick={handleClose}
-            className="p-1.5 text-warm-500 hover:text-warm-800 dark:hover:text-warm-200 rounded-xl transition-colors"
+            className="p-1.5 text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-200 rounded-xl transition-colors"
           >
             <X size={18} />
           </button>
         </div>
 
-        <div className="mt-3.5">
-          <h3 className="font-bold text-warm-900 dark:text-warm-50 text-base tracking-tight">
+        <div className="mt-4">
+          <h3 className="font-semibold text-neutral-900 dark:text-neutral-50 text-base tracking-tight">
             {modalTitle}
           </h3>
-          <p className="mt-2 text-xs text-warm-700/80 dark:text-warm-300/80 leading-relaxed">
+          <p className="mt-2 text-xs sm:text-[13px] text-neutral-600 dark:text-neutral-400 leading-relaxed">
             {modalDescription}
           </p>
         </div>
 
-        <div className="mt-5 space-y-2">
+        <div className="mt-6 space-y-2.5">
           <button
             disabled={isDeleting}
             onClick={handleNext}
-            className="btn-warm-primary w-full py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-warm-button disabled:opacity-50"
+            className="btn-warm-primary w-full py-3 px-4 rounded-2xl font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 disabled:opacity-50"
           >
             <Trash2 size={16} />
             <span>{buttonLabel}</span>
@@ -87,7 +87,7 @@ export default function ConfirmModal({
           <button
             disabled={isDeleting}
             onClick={handleClose}
-            className="btn-warm-secondary w-full py-2.5 px-4 rounded-2xl font-semibold text-xs sm:text-sm"
+            className="btn-warm-secondary w-full py-2.5 px-4 rounded-2xl font-medium text-xs sm:text-sm"
           >
             Отмена
           </button>

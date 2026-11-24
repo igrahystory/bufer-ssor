@@ -113,72 +113,70 @@ export default function Onboarding({ onAccepted, initialCouple }) {
 
   return (
     <div className="min-h-screen flex flex-col justify-between px-5 pt-safe pb-safe max-w-md mx-auto animate-fade-in">
-      <div className="pt-2">
-        {/* Шапка и логотип с мягким 3D-контейнером */}
-        <div className="text-center pt-2 pb-4">
+      <div className="pt-2 pb-4">
+        {/* Шапка и логотип */}
+        <div className="text-center pt-2 pb-3">
           <div className="flex justify-center mb-3">
-            <div className="relative">
-              <div className="w-20 h-20 rounded-3xl bg-white dark:bg-espresso-900 border border-warm-300/70 dark:border-warm-700/50 shadow-warm-3d p-1.5 flex items-center justify-center">
-                <img
-                  src="/logo.png"
-                  alt="Буфер Ссор"
-                  className="w-full h-full rounded-2xl object-cover shadow-xs"
-                />
-              </div>
+            <div className="w-18 h-18 rounded-3xl bg-white dark:bg-espresso-850 border border-neutral-200 dark:border-espresso-700 shadow-warm-card p-1.5 flex items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="Буфер Ссор"
+                className="w-full h-full rounded-2xl object-cover"
+              />
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-warm-200/70 dark:bg-espresso-900/60 text-terracotta-700 dark:text-terracotta-300 border border-warm-300/60 dark:border-warm-800/50 text-xs font-semibold mb-2.5 shadow-warm-xs">
-            <span>🤍 Безопасное пространство</span>
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-neutral-100 dark:bg-espresso-900 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-espresso-700 text-xs font-medium mb-3 shadow-warm-xs">
+            <span>Безопасное пространство</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-black text-warm-900 dark:text-warm-50 tracking-tight">
+          <h1 className="text-2xl sm:text-[26px] font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight leading-snug">
             Буфер Ссор
           </h1>
-          <p className="mt-1.5 text-xs sm:text-sm text-warm-700/80 dark:text-warm-300/80 max-w-xs mx-auto leading-relaxed">
+          <p className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 max-w-xs mx-auto leading-relaxed">
             ИИ-медиатор для пар в ссоре: бережно выслушает каждого наедине и поможет услышать друг друга
           </p>
         </div>
 
         {/* 3 главных тезиса безопасности */}
-        <div className="space-y-3 my-4">
-          <div className="warm-card rounded-3xl p-4 flex items-start gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/60 text-terracotta-600 dark:text-terracotta-400 flex items-center justify-center shrink-0 border border-terracotta-200/70 dark:border-terracotta-900/50 shadow-warm-xs">
+        <div className="space-y-3.5 my-5">
+          <div className="warm-card rounded-3xl p-5 flex items-start gap-4">
+            <div className="w-11 h-11 rounded-2xl bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 flex items-center justify-center shrink-0 border border-neutral-200 dark:border-espresso-700 shadow-warm-xs">
               <Shield size={20} />
             </div>
             <div>
-              <div className="font-bold text-warm-900 dark:text-warm-100 text-sm tracking-tight">
+              <div className="font-semibold text-neutral-900 dark:text-neutral-100 text-sm tracking-tight">
                 Анонимно
               </div>
-              <div className="text-xs text-warm-700/80 dark:text-warm-400 mt-0.5 leading-relaxed">
+              <div className="text-xs sm:text-[13px] text-neutral-600 dark:text-neutral-400 mt-1 leading-relaxed">
                 Ваши имена и личные данные не передаются во внешние системы и не разглашаются.
               </div>
             </div>
           </div>
 
-          <div className="warm-card rounded-3xl p-4 flex items-start gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-dustyRose-100 dark:bg-dustyRose-950/60 text-dustyRose-600 dark:text-dustyRose-400 flex items-center justify-center shrink-0 border border-dustyRose-200/70 dark:border-dustyRose-900/50 shadow-warm-xs">
+          <div className="warm-card rounded-3xl p-5 flex items-start gap-4">
+            <div className="w-11 h-11 rounded-2xl bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 flex items-center justify-center shrink-0 border border-neutral-200 dark:border-espresso-700 shadow-warm-xs">
               <MessageCircleHeart size={20} />
             </div>
             <div>
-              <div className="font-bold text-warm-900 dark:text-warm-100 text-sm tracking-tight">
+              <div className="font-semibold text-neutral-900 dark:text-neutral-100 text-sm tracking-tight">
                 ИИ выслушает каждого наедине
               </div>
-              <div className="text-xs text-warm-700/80 dark:text-warm-400 mt-0.5 leading-relaxed">
+              <div className="text-xs sm:text-[13px] text-neutral-600 dark:text-neutral-400 mt-1 leading-relaxed">
                 Партнёр никогда не увидит ваши исходные слова и формулировки.
               </div>
             </div>
           </div>
 
-          <div className="warm-card rounded-3xl p-4 flex items-start gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-olive-100 dark:bg-olive-950/60 text-olive-600 dark:text-olive-400 flex items-center justify-center shrink-0 border border-olive-200/70 dark:border-olive-900/50 shadow-warm-xs">
+          <div className="warm-card rounded-3xl p-5 flex items-start gap-4">
+            <div className="w-11 h-11 rounded-2xl bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 flex items-center justify-center shrink-0 border border-neutral-200 dark:border-espresso-700 shadow-warm-xs">
               <Trash2 size={20} />
             </div>
             <div>
-              <div className="font-bold text-warm-900 dark:text-warm-100 text-sm tracking-tight">
+              <div className="font-semibold text-neutral-900 dark:text-neutral-100 text-sm tracking-tight">
                 Исходники удаляются
               </div>
-              <div className="text-xs text-warm-700/80 dark:text-warm-400 mt-0.5 leading-relaxed">
+              <div className="text-xs sm:text-[13px] text-neutral-600 dark:text-neutral-400 mt-1 leading-relaxed">
                 Все исходные сообщения безвозвратно стираются сразу после анализа.
               </div>
             </div>
@@ -186,23 +184,23 @@ export default function Onboarding({ onAccepted, initialCouple }) {
         </div>
 
         {errorMsg && (
-          <div className="my-3 p-3.5 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/40 text-terracotta-800 dark:text-terracotta-200 text-xs border border-terracotta-200 dark:border-terracotta-900 shadow-warm-xs">
+          <div className="my-3 p-4 rounded-2xl bg-neutral-100 dark:bg-espresso-900 text-neutral-900 dark:text-neutral-100 text-xs border border-neutral-200 dark:border-espresso-700 shadow-warm-xs">
             {errorMsg}
           </div>
         )}
       </div>
 
       {/* Нижняя часть: чекбокс 18+ и кнопки */}
-      <div className="pt-4 pb-2 space-y-3.5">
+      <div className="pt-4 pb-4 space-y-4">
         {/* Чекбокс 18+ */}
-        <label className="warm-card-subtle flex items-start gap-3 p-3.5 rounded-2xl cursor-pointer select-none">
+        <label className="bg-neutral-100 dark:bg-espresso-900 border border-neutral-200 dark:border-espresso-700 flex items-start gap-3.5 p-4 rounded-2xl cursor-pointer select-none">
           <input
             type="checkbox"
             checked={is18Plus}
             onChange={handleCheckboxChange}
-            className="w-5 h-5 rounded-md border-warm-300 dark:border-warm-700 text-terracotta-500 focus:ring-terracotta-400 shrink-0 mt-0.5 cursor-pointer accent-terracotta-500"
+            className="w-4.5 h-4.5 rounded border-neutral-300 dark:border-espresso-700 text-neutral-900 dark:text-neutral-100 accent-neutral-900 dark:accent-neutral-100 shrink-0 mt-0.5 cursor-pointer"
           />
-          <span className="text-xs text-warm-800 dark:text-warm-200 leading-snug">
+          <span className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed">
             Мне исполнилось 18 лет, я принимаю{' '}
             <button
               type="button"
@@ -210,7 +208,7 @@ export default function Onboarding({ onAccepted, initialCouple }) {
                 e.preventDefault();
                 setActiveModalDoc('terms');
               }}
-              className="text-terracotta-600 dark:text-terracotta-400 font-semibold underline underline-offset-2 hover:opacity-80"
+              className="text-neutral-900 dark:text-neutral-50 font-medium underline underline-offset-2 hover:opacity-80"
             >
               Пользовательское соглашение (оферту)
             </button>
@@ -221,7 +219,7 @@ export default function Onboarding({ onAccepted, initialCouple }) {
                 e.preventDefault();
                 setActiveModalDoc('privacy');
               }}
-              className="text-terracotta-600 dark:text-terracotta-400 font-semibold underline underline-offset-2 hover:opacity-80"
+              className="text-neutral-900 dark:text-neutral-50 font-medium underline underline-offset-2 hover:opacity-80"
             >
               Политику конфиденциальности
             </button>{' '}
@@ -232,7 +230,7 @@ export default function Onboarding({ onAccepted, initialCouple }) {
                 e.preventDefault();
                 setActiveModalDoc('nda');
               }}
-              className="text-terracotta-600 dark:text-terracotta-400 font-semibold underline underline-offset-2 hover:opacity-80"
+              className="text-neutral-900 dark:text-neutral-50 font-medium underline underline-offset-2 hover:opacity-80"
             >
               Режим неразглашения
             </button>
@@ -241,15 +239,15 @@ export default function Onboarding({ onAccepted, initialCouple }) {
         </label>
 
         {/* Кнопки действий */}
-        <div className="space-y-2.5">
+        <div className="space-y-3">
           <button
             type="button"
             disabled={!is18Plus || isSubmitting}
             onClick={handleAccept}
-            className={`w-full py-3.5 px-4 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 transition-all ${
+            className={`w-full py-3.5 px-4 rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
               is18Plus && !isSubmitting
-                ? 'btn-warm-primary shadow-warm-button active:scale-[0.98]'
-                : 'bg-warm-200/80 dark:bg-espresso-900 text-warm-400 dark:text-warm-600 cursor-not-allowed border border-warm-300/40 dark:border-warm-800/40'
+                ? 'btn-warm-primary shadow-warm-button active:scale-[0.985]'
+                : 'bg-neutral-200 dark:bg-espresso-850 text-neutral-400 dark:text-neutral-600 cursor-not-allowed border border-neutral-200 dark:border-espresso-800'
             }`}
           >
             <span>{isSubmitting ? 'Сохранение...' : 'Продолжить'}</span>
@@ -260,9 +258,9 @@ export default function Onboarding({ onAccepted, initialCouple }) {
             type="button"
             onClick={handleInvite}
             disabled={isInviting}
-            className="btn-warm-secondary w-full py-3 px-4 rounded-2xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2"
+            className="btn-warm-secondary w-full py-3.5 px-4 rounded-2xl text-xs sm:text-sm font-medium flex items-center justify-center gap-2"
           >
-            <UserPlus size={16} className="text-terracotta-500" />
+            <UserPlus size={16} className="text-neutral-700 dark:text-neutral-300" />
             <span>{isInviting ? 'Генерация ссылки...' : 'Пригласить партнёра'}</span>
           </button>
         </div>

@@ -37,20 +37,20 @@ export default function CopyButton({ text, label = 'Скопировать', cla
     <button
       onClick={handleCopy}
       type="button"
-      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-warm-xs ${
+      className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all shadow-warm-xs ${
         copied
-          ? 'bg-olive-100 dark:bg-olive-950/70 text-olive-800 dark:text-olive-300 border border-olive-300/80 dark:border-olive-800/60'
-          : 'bg-warm-100/90 hover:bg-warm-200/80 dark:bg-espresso-850 dark:hover:bg-espresso-800 text-warm-800 dark:text-warm-200 border border-warm-300/70 dark:border-warm-700/50'
+          ? 'bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-espresso-600'
+          : 'bg-white hover:bg-neutral-50 dark:bg-espresso-850 dark:hover:bg-espresso-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-espresso-700'
       } ${className}`}
     >
       {copied ? (
         <>
-          <Check size={13} className="text-olive-600 dark:text-olive-400" />
+          <Check size={13} className="text-neutral-900 dark:text-neutral-100" />
           <span>Скопировано!</span>
         </>
       ) : (
         <>
-          <Copy size={13} className="text-warm-600 dark:text-warm-400" />
+          <Copy size={13} className="text-neutral-600 dark:text-neutral-400" />
           <span>{label}</span>
         </>
       )}

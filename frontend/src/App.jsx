@@ -28,7 +28,7 @@ export default function App() {
 
         const syncTheme = () => {
           const isDark = WebApp.colorScheme === 'dark';
-          const background = isDark ? '#161412' : '#F7F3ED';
+          const background = isDark ? '#141311' : '#FAF9F6';
           document.documentElement.classList.toggle('dark', isDark);
           const themeMeta = document.querySelector('meta[name="theme-color"]');
           if (themeMeta) themeMeta.setAttribute('content', background);
@@ -106,14 +106,14 @@ export default function App() {
   // Экран загрузки
   if (currentScreen === 'loading') {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-warm-100 dark:bg-espresso-950 text-center animate-fade-in">
-        <div className="w-14 h-14 rounded-2xl bg-white dark:bg-espresso-900 border border-warm-300/60 dark:border-warm-700/30 text-terracotta-500 dark:text-terracotta-400 flex items-center justify-center shadow-warm-3d animate-pulse mb-3.5">
-          <Sparkles size={24} />
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-neutral-50 dark:bg-espresso-950 text-center animate-fade-in">
+        <div className="w-13 h-13 rounded-2xl bg-white dark:bg-espresso-850 border border-neutral-200 dark:border-espresso-700 text-neutral-900 dark:text-neutral-100 flex items-center justify-center shadow-warm-card mb-4">
+          <Sparkles size={22} className="animate-pulse" />
         </div>
-        <div className="text-base font-bold text-warm-900 dark:text-warm-50 tracking-tight">
+        <div className="text-[17px] font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">
           Буфер Ссор
         </div>
-        <div className="text-xs text-warm-700/70 dark:text-warm-300/60 mt-1">
+        <div className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
           Подключение к защищённому каналу...
         </div>
       </div>
@@ -123,19 +123,19 @@ export default function App() {
   // Экран ошибки инициализации
   if (currentScreen === 'error') {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-warm-100 dark:bg-espresso-950 text-center animate-fade-in">
-        <div className="w-14 h-14 rounded-2xl bg-white dark:bg-espresso-900 border border-terracotta-200 dark:border-terracotta-800/40 text-terracotta-600 dark:text-terracotta-400 flex items-center justify-center shadow-warm-3d mb-3.5">
-          <AlertCircle size={24} />
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-neutral-50 dark:bg-espresso-950 text-center animate-fade-in">
+        <div className="w-13 h-13 rounded-2xl bg-white dark:bg-espresso-850 border border-neutral-200 dark:border-espresso-700 text-neutral-900 dark:text-neutral-100 flex items-center justify-center shadow-warm-card mb-4">
+          <AlertCircle size={22} />
         </div>
-        <div className="text-sm font-bold text-warm-900 dark:text-warm-50 tracking-tight">
+        <div className="text-[17px] font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">
           Не удалось загрузить приложение
         </div>
-        <div className="text-xs text-warm-700 dark:text-warm-300 mt-1 max-w-xs leading-relaxed">
+        <div className="text-xs text-neutral-600 dark:text-neutral-400 mt-1.5 max-w-xs leading-relaxed">
           {initError?.message || 'Пожалуйста, откройте приложение заново через Telegram-бота @BufferSsorBot'}
         </div>
         <button
           onClick={loadProfile}
-          className="mt-4 inline-flex items-center gap-1.5 py-2.5 px-4 btn-warm-primary rounded-xl text-xs font-semibold shadow-warm-button"
+          className="mt-5 inline-flex items-center gap-2 py-2.5 px-4 btn-warm-primary rounded-xl text-xs font-semibold"
         >
           <RefreshCw size={13} />
           <span>Попробовать снова</span>

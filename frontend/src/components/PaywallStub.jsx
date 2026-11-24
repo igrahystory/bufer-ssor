@@ -46,79 +46,79 @@ export default function PaywallStub({ onBack }) {
         {/* Кнопка назад */}
         <button
           onClick={handleBack}
-          className="inline-flex items-center gap-1.5 text-xs text-warm-700 hover:text-warm-900 dark:text-warm-300 dark:hover:text-warm-100 mb-4 py-1.5 px-2.5 -ml-2 rounded-xl hover:bg-warm-200/60 dark:hover:bg-espresso-900 transition-colors font-medium"
+          className="inline-flex items-center gap-1.5 text-xs text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 mb-4 py-1.5 px-2.5 -ml-2 rounded-xl transition-colors font-medium"
         >
           <ArrowLeft size={16} />
           <span>Назад на главную</span>
         </button>
 
-        {/* Иконка и заголовки с тактильным объёмом */}
+        {/* Иконка и заголовки */}
         <div className="text-center pt-1 pb-5">
-          <div className="w-16 h-16 mx-auto rounded-3xl bg-terracotta-50 dark:bg-terracotta-950/60 text-terracotta-600 dark:text-terracotta-400 flex items-center justify-center border border-terracotta-200/70 dark:border-terracotta-900/50 shadow-warm-3d mb-3.5">
-            <Sparkles size={28} />
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 flex items-center justify-center border border-neutral-200 dark:border-espresso-700 shadow-warm-xs mb-3.5">
+            <Sparkles size={26} />
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-warm-900 dark:text-warm-50 tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
             Оформите подписку для пары
           </h2>
-          <p className="mt-1.5 text-xs sm:text-sm text-warm-700/80 dark:text-warm-300/80 leading-relaxed max-w-xs mx-auto">
+          <p className="mt-1.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xs mx-auto">
             Один тариф на двоих: безлимитные медиации, персональный ИИ-анализ и забота о ваших отношениях.
           </p>
         </div>
 
         {/* Карточка преимуществ */}
-        <div className="warm-card rounded-3xl p-5 space-y-3.5">
-          <div className="font-bold text-[11px] text-warm-600 dark:text-warm-400 uppercase tracking-wider">
+        <div className="warm-card rounded-3xl p-5 sm:p-6 space-y-4">
+          <div className="font-semibold text-[11px] text-neutral-500 uppercase tracking-wider">
             Что входит в подписку:
           </div>
 
           <div className="flex items-start gap-3">
-            <div className="w-5 h-5 rounded-full bg-olive-100 dark:bg-olive-950/60 text-olive-700 dark:text-olive-300 flex items-center justify-center shrink-0 mt-0.5 shadow-warm-xs">
-              <Check size={13} />
+            <div className="w-5 h-5 rounded-full bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-espresso-700 flex items-center justify-center shrink-0 mt-0.5">
+              <Check size={12} />
             </div>
-            <div className="text-xs text-warm-800 dark:text-warm-200 leading-relaxed">
-              <span className="font-bold text-warm-900 dark:text-warm-50">Безлимитные медиации ссор</span> — бережный разбор любых разногласий 24/7.
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3">
-            <div className="w-5 h-5 rounded-full bg-olive-100 dark:bg-olive-950/60 text-olive-700 dark:text-olive-300 flex items-center justify-center shrink-0 mt-0.5 shadow-warm-xs">
-              <Check size={13} />
-            </div>
-            <div className="text-xs text-warm-800 dark:text-warm-200 leading-relaxed">
-              <span className="font-bold text-warm-900 dark:text-warm-50">Персональные шаги примирения</span> — конкретные фразы и действия для спокойного выхода из конфликта.
+            <div className="text-xs sm:text-[13px] text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              <span className="font-semibold text-neutral-900 dark:text-neutral-50">Безлимитные медиации ссор</span> — бережный разбор любых разногласий 24/7.
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <div className="w-5 h-5 rounded-full bg-olive-100 dark:bg-olive-950/60 text-olive-700 dark:text-olive-300 flex items-center justify-center shrink-0 mt-0.5 shadow-warm-xs">
-              <Check size={13} />
+            <div className="w-5 h-5 rounded-full bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-espresso-700 flex items-center justify-center shrink-0 mt-0.5">
+              <Check size={12} />
             </div>
-            <div className="text-xs text-warm-800 dark:text-warm-200 leading-relaxed">
-              <span className="font-bold text-warm-900 dark:text-warm-50">Полная тайна исповеди</span> — неизменный строгий информационный барьер.
+            <div className="text-xs sm:text-[13px] text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              <span className="font-semibold text-neutral-900 dark:text-neutral-50">Персональные шаги примирения</span> — конкретные фразы и действия для спокойного выхода из конфликта.
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <div className="w-5 h-5 rounded-full bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-espresso-700 flex items-center justify-center shrink-0 mt-0.5">
+              <Check size={12} />
+            </div>
+            <div className="text-xs sm:text-[13px] text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              <span className="font-semibold text-neutral-900 dark:text-neutral-50">Полная тайна исповеди</span> — неизменный строгий информационный барьер.
             </div>
           </div>
         </div>
 
         {error && (
-          <div className="mt-4 p-3.5 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/40 border border-terracotta-200 dark:border-terracotta-900/60 flex items-center gap-2.5 text-xs text-terracotta-800 dark:text-terracotta-200 shadow-warm-xs">
-            <AlertCircle size={15} className="shrink-0 text-terracotta-600" />
+          <div className="mt-4 p-4 rounded-2xl bg-neutral-100 dark:bg-espresso-900 border border-neutral-200 dark:border-espresso-700 flex items-center gap-2.5 text-xs text-neutral-900 dark:text-neutral-100 shadow-warm-xs">
+            <AlertCircle size={15} className="shrink-0 text-neutral-700" />
             <span>{error}</span>
           </div>
         )}
 
         {/* Информационный бэйдж */}
-        <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-warm-600 dark:text-warm-400">
-          <Shield size={14} className="text-olive-600 dark:text-olive-400" />
+        <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-neutral-500">
+          <Shield size={14} className="text-neutral-600 dark:text-neutral-400" />
           <span>Безопасная оплата через ЮKassa</span>
         </div>
       </div>
 
       {/* Кнопки действий */}
-      <div className="pt-6 pb-2 space-y-2.5">
+      <div className="pt-6 pb-2 space-y-3">
         <button
           onClick={handleSubscribe}
           disabled={isLoading}
-          className="btn-warm-primary w-full py-3.5 px-4 rounded-2xl font-bold text-sm shadow-warm-button flex items-center justify-center gap-2 disabled:opacity-50"
+          className="btn-warm-primary w-full py-3.5 px-4 rounded-2xl font-semibold text-sm shadow-warm-button flex items-center justify-center gap-2 disabled:opacity-50"
         >
           <Sparkles size={16} />
           <span>{isLoading ? 'Подключение к ЮKassa...' : 'Оформить подписку за 199 ₽ / мес'}</span>
@@ -126,7 +126,7 @@ export default function PaywallStub({ onBack }) {
 
         <button
           onClick={handleBack}
-          className="btn-warm-secondary w-full py-3 px-4 rounded-2xl text-xs font-semibold"
+          className="btn-warm-secondary w-full py-3 px-4 rounded-2xl text-xs font-medium"
         >
           Вернуться на главную
         </button>

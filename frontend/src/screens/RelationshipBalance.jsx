@@ -64,76 +64,76 @@ export default function RelationshipBalance({ sessionId, onBack }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-warm-700 dark:text-warm-300 gap-2">
-        <LoaderCircle className="animate-spin text-terracotta-500" />
+      <div className="min-h-screen flex items-center justify-center text-neutral-700 dark:text-neutral-300 gap-2">
+        <LoaderCircle className="animate-spin text-neutral-900 dark:text-neutral-100" />
         <span className="text-sm font-medium">Загружаем…</span>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen text-warm-900 dark:text-warm-100 px-4 pt-safe pb-safe sm:px-5">
-      <div className="max-w-md mx-auto space-y-4 app-home-stack pt-2">
+    <main className="min-h-screen text-neutral-900 dark:text-neutral-100 px-5 pt-safe pb-safe">
+      <div className="max-w-md mx-auto space-y-5 app-home-stack pt-2 pb-6">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-1.5 text-xs text-warm-700 hover:text-warm-900 dark:text-warm-300 dark:hover:text-warm-100 py-1.5 px-2.5 -ml-2 rounded-xl hover:bg-warm-200/60 dark:hover:bg-espresso-900 transition-colors font-medium"
+          className="inline-flex items-center gap-1.5 text-xs text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 py-1.5 px-2.5 -ml-2 rounded-xl transition-colors font-medium"
         >
           <ArrowLeft size={16} />
           <span>На главную</span>
         </button>
 
-        <header className="home-conflict-warm rounded-3xl p-6 text-white shadow-warm-button">
-          <div className="w-12 h-12 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center mb-3 backdrop-blur-md shadow-inner">
-            <Heart size={24} className="text-white fill-white/25" />
+        <header className="home-conflict-warm rounded-3xl p-6 sm:p-7 text-neutral-50 shadow-warm-button">
+          <div className="w-11 h-11 rounded-2xl bg-white/10 dark:bg-black/10 border border-white/15 dark:border-black/10 flex items-center justify-center mb-3">
+            <Heart size={22} className="fill-current opacity-80" />
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white drop-shadow-xs">
+          <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-white dark:text-neutral-900">
             Баланс отношений
           </h1>
-          <p className="mt-1.5 text-xs text-white/90 leading-relaxed font-medium">
+          <p className="mt-1.5 text-xs text-white/80 dark:text-neutral-700 leading-relaxed font-normal">
             Ответьте каждый отдельно. Партнёр не увидит ваши отдельные ответы — вместе вы получите общий бережный итог и идеи для пары.
           </p>
         </header>
 
         {error && (
-          <div role="alert" className="rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/40 border border-terracotta-200 dark:border-terracotta-900 p-3.5 text-xs text-terracotta-800 dark:text-terracotta-200 shadow-warm-xs">
+          <div role="alert" className="rounded-2xl bg-neutral-100 dark:bg-espresso-900 border border-neutral-200 dark:border-espresso-700 p-4 text-xs text-neutral-900 dark:text-neutral-100 shadow-warm-xs">
             {error}
           </div>
         )}
 
         {session?.status === 'completed' && session.result ? (
           <section className="space-y-4">
-            <div className="warm-card rounded-3xl p-5 text-center">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-terracotta-600 dark:text-terracotta-400">
+            <div className="warm-card rounded-3xl p-6 text-center">
+              <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
                 Общий баланс
               </div>
-              <div className="text-5xl font-black mt-2 text-warm-900 dark:text-warm-50 tracking-tight">
+              <div className="text-5xl font-semibold mt-2 text-neutral-900 dark:text-neutral-50 tracking-tight">
                 {session.result.score}
-                <span className="text-xl text-warm-500 font-semibold">/100</span>
+                <span className="text-xl text-neutral-400 font-normal">/100</span>
               </div>
-              <div className="font-bold text-sm mt-2 text-warm-800 dark:text-warm-200">
+              <div className="font-semibold text-sm sm:text-base mt-2 text-neutral-900 dark:text-neutral-100">
                 {session.result.label}
               </div>
-              <p className="text-xs sm:text-sm text-warm-700/80 dark:text-warm-300 mt-2.5 leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">
                 {session.result.summary}
               </p>
-              <p className="text-[11px] text-warm-500/80 dark:text-warm-400/80 mt-3">
+              <p className="text-[11px] text-neutral-400 mt-3">
                 Шкала показывает ваши ответы сегодня — это ориентир для спокойного разговора, не оценка пары.
               </p>
             </div>
 
-            <div className="warm-card rounded-3xl p-5 space-y-3">
-              <h2 className="font-bold text-sm text-warm-900 dark:text-warm-100 tracking-tight">
+            <div className="warm-card rounded-3xl p-5 sm:p-6 space-y-3.5">
+              <h2 className="font-semibold text-sm text-neutral-900 dark:text-neutral-100 tracking-tight">
                 Темы для общего внимания
               </h2>
               {session.result.dimension_scores?.map((value, index) => (
-                <div key={index}>
-                  <div className="flex justify-between text-xs mb-1 font-medium text-warm-700 dark:text-warm-300">
+                <div key={index} className="space-y-1">
+                  <div className="flex justify-between text-xs font-medium text-neutral-700 dark:text-neutral-300">
                     <span>{DIMENSIONS[index]}</span>
-                    <span className="text-warm-500">{value}/5</span>
+                    <span className="text-neutral-500">{value}/5</span>
                   </div>
-                  <div className="h-2 rounded-full bg-warm-200/80 dark:bg-espresso-900 overflow-hidden shadow-inner">
+                  <div className="h-2 rounded-full bg-neutral-200 dark:bg-espresso-800 overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-terracotta-500"
+                      className="h-full rounded-full bg-neutral-900 dark:bg-neutral-100 transition-all duration-500"
                       style={{ width: `${value * 20}%` }}
                     />
                   </div>
@@ -141,54 +141,54 @@ export default function RelationshipBalance({ sessionId, onBack }) {
               ))}
             </div>
 
-            <div className="warm-card rounded-3xl p-5 space-y-3">
-              <h2 className="font-bold text-sm text-warm-900 dark:text-warm-100 flex items-center gap-2 tracking-tight">
-                <Sparkles size={16} className="text-terracotta-500" />
+            <div className="warm-card rounded-3xl p-5 sm:p-6 space-y-3.5">
+              <h2 className="font-semibold text-sm text-neutral-900 dark:text-neutral-100 flex items-center gap-2 tracking-tight">
+                <Sparkles size={16} className="text-neutral-700 dark:text-neutral-300" />
                 <span>Что можно попробовать</span>
               </h2>
-              <ul className="mt-2 space-y-2.5 text-xs sm:text-sm text-warm-800 dark:text-warm-200">
+              <ul className="mt-2 space-y-2 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
                 {session.result.tips?.map((tip, i) => (
                   <li key={i} className="flex gap-2 leading-relaxed">
-                    <span className="text-terracotta-500 font-bold">•</span>
+                    <span className="text-neutral-400 font-bold">•</span>
                     <span>{tip}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 rounded-2xl bg-warm-100 dark:bg-espresso-900/80 p-3.5 text-xs text-warm-900 dark:text-warm-100 border border-warm-200/60 dark:border-warm-800/40 leading-relaxed shadow-warm-xs">
-                <b className="text-terracotta-700 dark:text-terracotta-300">Идея для вас двоих:</b> {session.result.activity_idea}
+              <div className="mt-4 rounded-2xl bg-neutral-100 dark:bg-espresso-900 p-4 text-xs text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-espresso-700 leading-relaxed shadow-warm-xs">
+                <b className="font-semibold">Идея для вас двоих:</b> {session.result.activity_idea}
               </div>
             </div>
 
             <button
               onClick={finish}
               disabled={session.finish_confirmed_by_me}
-              className="btn-warm-primary w-full rounded-2xl py-3.5 font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-warm-button disabled:opacity-60"
+              className="btn-warm-primary w-full rounded-2xl py-3.5 font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-warm-button disabled:opacity-60"
             >
               <Check size={18} />
               <span>{session.finish_confirmed_by_me ? 'Ожидаем подтверждение партнёра' : 'Завершить баланс'}</span>
             </button>
-            <p className="text-center text-[11px] text-warm-500">
+            <p className="text-center text-[11px] text-neutral-500">
               Результат удалится после подтверждения обоих или автоматически через 48 часов.
             </p>
           </section>
         ) : session?.answered ? (
-          <section className="warm-card rounded-3xl p-6 text-center space-y-3">
-            <LoaderCircle className="animate-spin mx-auto text-terracotta-500" size={30} />
-            <h2 className="font-bold text-base text-warm-900 dark:text-warm-100 tracking-tight">
+          <section className="warm-card rounded-3xl p-6 sm:p-7 text-center space-y-3">
+            <LoaderCircle className="animate-spin mx-auto text-neutral-900 dark:text-neutral-100" size={28} />
+            <h2 className="font-semibold text-base text-neutral-900 dark:text-neutral-100 tracking-tight">
               Ждём ответы партнёра
             </h2>
-            <p className="text-xs text-warm-700/80 dark:text-warm-300 leading-relaxed max-w-xs mx-auto">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xs mx-auto">
               Когда он или она закончит, ИИ подготовит общий результат. Ответы хранятся зашифрованными только до анализа.
             </p>
           </section>
         ) : (
-          <section className="space-y-3.5">
-            <p className="text-xs text-warm-700/80 dark:text-warm-300 px-1">
+          <section className="space-y-4">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 px-1">
               Насколько часто это бывает для вас? Выберите один ответ для каждого утверждения:
             </p>
             {QUESTIONS.map((question, index) => (
-              <fieldset key={question} className="warm-card rounded-3xl p-4.5 space-y-2.5">
-                <legend className="font-bold text-xs sm:text-sm text-warm-900 dark:text-warm-100 leading-relaxed tracking-tight">
+              <fieldset key={question} className="warm-card rounded-3xl p-5 sm:p-6 space-y-3">
+                <legend className="font-semibold text-xs sm:text-sm text-neutral-900 dark:text-neutral-100 leading-relaxed tracking-tight">
                   {index + 1}. {question}
                 </legend>
                 <div className="mt-2 grid grid-cols-1 gap-2">
@@ -198,10 +198,10 @@ export default function RelationshipBalance({ sessionId, onBack }) {
                     return (
                       <label
                         key={option}
-                        className={`flex items-center gap-3 rounded-2xl border p-3 text-xs sm:text-sm cursor-pointer transition-all ${
+                        className={`flex items-center gap-3 rounded-2xl border p-3.5 text-xs sm:text-sm cursor-pointer transition-all ${
                           isSelected
-                            ? 'border-terracotta-500 bg-terracotta-50/70 dark:bg-terracotta-950/40 text-terracotta-900 dark:text-terracotta-100 font-semibold shadow-warm-xs'
-                            : 'border-warm-200/80 dark:border-warm-800/60 bg-white/60 dark:bg-espresso-900/60 text-warm-800 dark:text-warm-200 hover:bg-warm-100/60 dark:hover:bg-espresso-850'
+                            ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-espresso-850 text-neutral-900 dark:text-neutral-100 font-medium shadow-warm-xs'
+                            : 'border-neutral-200 dark:border-espresso-700 bg-white/80 dark:bg-espresso-900/60 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-espresso-850'
                         }`}
                       >
                         <input
@@ -210,7 +210,7 @@ export default function RelationshipBalance({ sessionId, onBack }) {
                           value={value}
                           checked={isSelected}
                           onChange={() => setAnswers((prev) => prev.map((v, i) => (i === index ? value : v)))}
-                          className="accent-terracotta-500 w-4 h-4 cursor-pointer"
+                          className="accent-neutral-900 dark:accent-neutral-100 w-4 h-4 cursor-pointer"
                         />
                         <span>{option}</span>
                       </label>
@@ -224,7 +224,7 @@ export default function RelationshipBalance({ sessionId, onBack }) {
               <button
                 disabled={answers.some((answer) => !answer) || submitting}
                 onClick={submit}
-                className="btn-warm-primary w-full rounded-2xl py-3.5 font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-warm-button disabled:opacity-50"
+                className="btn-warm-primary w-full rounded-2xl py-3.5 font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-warm-button disabled:opacity-50"
               >
                 {submitting ? (
                   <>

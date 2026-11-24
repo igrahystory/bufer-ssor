@@ -9,28 +9,24 @@ const HINTS = [
     title: 'Мне нужны объятия',
     desc: 'Бот мягко подскажет, что тепло и объятия сейчас важнее любых споров',
     icon: Heart,
-    color: 'text-terracotta-600 bg-terracotta-50 dark:bg-terracotta-950/50 border-terracotta-200/70 dark:border-terracotta-900/50',
   },
   {
     type: 'silence',
     title: 'Хочу побыть в тишине',
     desc: 'Бот деликатно передаст просьбу о короткой паузе для отдыха',
     icon: Moon,
-    color: 'text-warm-700 bg-warm-100 dark:bg-espresso-900 border-warm-300/60 dark:border-warm-700/50',
   },
   {
     type: 'talk_evening',
     title: 'Давай поговорим вечером',
     desc: 'Бот напомнит партнеру, что вечером вас ждет бережный спокойный диалог',
     icon: Coffee,
-    color: 'text-dustyRose-600 bg-dustyRose-50 dark:bg-dustyRose-950/50 border-dustyRose-200/70 dark:border-dustyRose-900/50',
   },
   {
     type: 'support',
     title: 'Мне нужна поддержка',
     desc: 'Бот подскажет партнеру проявить сочувствие и побыть на твоей стороне',
     icon: HandHeart,
-    color: 'text-olive-700 bg-olive-50 dark:bg-olive-950/50 border-olive-200/70 dark:border-olive-900/50',
   },
 ];
 
@@ -63,38 +59,38 @@ export default function HintModal({ isOpen, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-warm-950/60 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/40 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="warm-card w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl flex flex-col shadow-warm-3d animate-slide-up border border-warm-300/70 dark:border-warm-700/40"
+        className="warm-card w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl flex flex-col shadow-warm-3d animate-slide-up border border-neutral-200 dark:border-espresso-700 bg-white dark:bg-espresso-850"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between p-4.5 border-b border-warm-200/60 dark:border-warm-800/40">
+        <div className="flex items-center justify-between p-5 border-b border-neutral-200 dark:border-espresso-700">
           <div>
-            <h3 className="font-bold text-warm-900 dark:text-warm-50 text-sm tracking-tight flex items-center gap-1.5">
+            <h3 className="font-semibold text-neutral-900 dark:text-neutral-50 text-[15px] tracking-tight flex items-center gap-2">
               <span>💡</span>
               <span>Тонкий намёк</span>
             </h3>
-            <p className="text-[11px] text-warm-700/80 dark:text-warm-400 mt-0.5">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5">
               Бот подскажет от своего имени, не выдавая отправителя
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl text-warm-500 hover:text-warm-800 dark:hover:text-warm-200 hover:bg-warm-100 dark:hover:bg-espresso-900 transition-colors"
+            className="p-1.5 rounded-xl text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-espresso-800 transition-colors"
           >
             <X size={18} />
           </button>
         </div>
 
         {errorMsg && (
-          <div className="mx-4 mt-3 p-3 rounded-2xl bg-terracotta-50 dark:bg-terracotta-950/40 text-terracotta-800 dark:text-terracotta-200 text-xs border border-terracotta-200 dark:border-terracotta-900 shadow-warm-xs">
+          <div className="mx-5 mt-4 p-3.5 rounded-2xl bg-neutral-100 dark:bg-espresso-900 text-neutral-900 dark:text-neutral-100 text-xs border border-neutral-200 dark:border-espresso-700 shadow-warm-xs">
             {errorMsg}
           </div>
         )}
 
-        <div className="p-4 space-y-2.5 pb-safe">
+        <div className="p-5 space-y-3 pb-safe">
           {HINTS.map((h) => {
             const Icon = h.icon;
             const isSelected = successType === h.type;
@@ -105,31 +101,31 @@ export default function HintModal({ isOpen, onClose }) {
                 key={h.type}
                 disabled={Boolean(loadingType)}
                 onClick={() => handleSelectHint(h.type)}
-                className={`w-full text-left p-3.5 rounded-2xl border transition-all flex items-start gap-3.5 shadow-warm-xs ${
+                className={`w-full text-left p-4 rounded-2xl border transition-all flex items-start gap-3.5 shadow-warm-xs ${
                   isSelected
-                    ? 'border-olive-500 bg-olive-50/80 dark:bg-olive-950/50 shadow-warm-card'
-                    : 'border-warm-200/80 dark:border-warm-800/50 bg-white/70 dark:bg-espresso-900/60 hover:bg-warm-50 dark:hover:bg-espresso-850'
+                    ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-espresso-800 shadow-warm-card'
+                    : 'border-neutral-200 dark:border-espresso-700 bg-white dark:bg-espresso-900/60 hover:bg-neutral-50 dark:hover:bg-espresso-800'
                 } ${isLoading ? 'opacity-60 cursor-wait' : ''}`}
               >
-                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 border shadow-warm-xs ${h.color}`}>
+                <div className="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 border border-neutral-200 dark:border-espresso-700 bg-neutral-100 dark:bg-espresso-800 text-neutral-900 dark:text-neutral-100 shadow-warm-xs">
                   {isSelected ? (
-                    <CheckCircle2 size={18} className="text-olive-600 dark:text-olive-400" />
+                    <CheckCircle2 size={18} className="text-neutral-900 dark:text-neutral-100" />
                   ) : (
                     <Icon size={18} />
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <div className="font-bold text-warm-900 dark:text-warm-100 text-xs sm:text-sm tracking-tight">
+                    <div className="font-semibold text-neutral-900 dark:text-neutral-100 text-xs sm:text-sm tracking-tight">
                       {h.title}
                     </div>
                     {isSelected && (
-                      <span className="text-[11px] font-bold text-olive-700 dark:text-olive-300">
+                      <span className="text-xs font-semibold text-neutral-900 dark:text-neutral-100">
                         Отправлено!
                       </span>
                     )}
                   </div>
-                  <div className="text-[11px] text-warm-700/80 dark:text-warm-400 mt-0.5 line-clamp-2 leading-relaxed">
+                  <div className="text-xs text-neutral-600 dark:text-neutral-400 mt-1 line-clamp-2 leading-relaxed">
                     {h.desc}
                   </div>
                 </div>
