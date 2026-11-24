@@ -25,6 +25,7 @@ import { api } from '../api/client';
 import HintModal from '../components/HintModal';
 import ConfirmModal from '../components/ConfirmModal';
 import LegalModal from '../components/LegalModal';
+import appLogo from '../assets/logo.png';
 
 export default function Home({ meData, onStartSession, onOpenActiveSession, onStartBalance, onRefreshProfile, onPaywallRequired }) {
   const user = meData?.user || {};
@@ -250,7 +251,7 @@ export default function Home({ meData, onStartSession, onOpenActiveSession, onSt
         <header className="flex items-center justify-between py-1">
           <div className="flex items-center gap-3">
             <img
-              src="/logo.png"
+              src={appLogo}
               alt="Буфер Ссор"
               className="w-9 h-9 rounded-xl object-cover border border-neutral-200 dark:border-espresso-700 shadow-warm-xs shrink-0"
             />

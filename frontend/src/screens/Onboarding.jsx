@@ -3,6 +3,7 @@ import { Shield, MessageCircleHeart, Trash2, UserPlus, ArrowRight, Check } from 
 import WebApp from '@twa-dev/sdk';
 import { api } from '../api/client';
 import LegalModal from '../components/LegalModal';
+import appLogo from '../assets/logo.png';
 
 export default function Onboarding({ onAccepted, initialCouple }) {
   const [is18Plus, setIs18Plus] = useState(false);
@@ -119,7 +120,7 @@ export default function Onboarding({ onAccepted, initialCouple }) {
           <div className="flex justify-center mb-3">
             <div className="w-18 h-18 rounded-3xl bg-white dark:bg-espresso-850 border border-neutral-200 dark:border-espresso-700 shadow-warm-card p-1.5 flex items-center justify-center">
               <img
-                src="/logo.png"
+                src={appLogo}
                 alt="Буфер Ссор"
                 className="w-full h-full rounded-2xl object-cover"
               />
